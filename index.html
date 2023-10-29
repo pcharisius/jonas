@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>W3.CSS Template</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Orbitron">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        body {
+            font-family: "Lato", sans-serif
+        }
+
+        .mySlides {
+            display: none
+        }
+
+        .code-numbers {
+            font-family: "Orbitron", sans-serif;
+            font-size: 100pt;
+            margin: auto;
+            border: solid;
+        }
+
+        .one-line {
+            font-family: "Orbitron", sans-serif;
+            font-size: 100pt;
+            margin: auto;
+            border: solid;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Page content -->
+    <div class="w3-content" style="max-width:2000px;margin-top:10px">
+
+        <!-- Automatic Slideshow Images -->
+        <div class="w3-center w3-black">
+            <div class="w3-text-white w3-padding">
+
+                <h3>Mastermind</h3>
+                <p><b>Finde den richtigen Code!</b></p>
+                <p>Du hast insgesamt 8 Versuche.</p>
+            </div>
+
+            <div class=" w3-row-padding w3-center" style="max-width:1000px; margin: auto">
+                <div class="w3-quarter">
+                    <p class="w3-text code-numbers" id="number0">0</p>
+                    <button class="w3-button w3-grey w3-margin" onclick="increase('number0')">Change</button>
+                </div>
+                <div class="w3-quarter">
+                    <p class="w3-text code-numbers" id="number1">0</p>
+                    <button class="w3-button w3-grey w3-margin" onclick="increase('number1')">Change</button>
+                </div>
+                <div class="w3-quarter">
+                    <p class="w3-text code-numbers" id="number2">0</p>
+                    <button class="w3-button w3-grey w3-margin" onclick="increase('number2')">Change</button>
+                </div>
+                <div class="w3-quarter">
+                    <p class="w3-text code-numbers" id="number3">0</p>
+                    <button class="w3-button w3-grey w3-margin" onclick="increase('number3')">Change</button>
+                </div>
+            </div>
+
+            <div class="w3-padding-32">
+                <button class="w3-button w3-red w3-margin-bottom" onclick="check()">Check</button>
+            </div>
+
+            
+
+            <div class="w3-border w3-margin w3-row">
+                <div class="w3-green w3-third" id="result-correct" style="height:32px;width:0%"></div>
+                <div class="w3-yellow w3-third" id="result-include" style="height:32px;width:0%"></div>
+            </div> 
+
+            <div class="w3-padding-32 w3-xxlarge">
+                <a class="w3-text">Noch </a>
+                <a class="w3-text" id="counter">8</a>
+                <a class="w3-text"> Versuche übrig. </a>
+
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Fehler Modal -->
+  <div id="fehlerModal" class="w3-modal">
+    <div class="w3-modal-content w3-animate-top w3-card-4">
+      <header class="w3-container w3-grey w3-center w3-padding-32"> 
+        <span onclick="reset()" 
+       class="w3-button w3-grey w3-xlarge w3-display-topright">×</span>
+        <h2 class="w3-wide"><i class="w3-margin-right"></i>Mist!</h2>
+      </header>
+      <div class="w3-container w3-center">
+        <p>Das war leider nichts!</p>
+        <p>
+            <a>Der Code lautete: </a>
+            <a id="code-answer"></a>
+        </p>
+        <button class="w3-button w3-red w3-section" onclick="reset()">One more time <i class="fa fa-remove"></i></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Geschafft Modal -->
+  <div id="geschafftModal" class="w3-modal">
+    <div class="w3-modal-content w3-animate-top w3-card-4">
+      <header class="w3-container w3-grey w3-center w3-padding-32"> 
+        <span onclick="document.getElementById('geschafftModal').style.display='none'" 
+       class="w3-button w3-grey w3-xlarge w3-display-topright">×</span>
+        <h2 class="w3-wide"><i class="w3-margin-right"></i>Geschafft!</h2>
+      </header>
+      <div class="w3-container w3-center">
+        <p>Top! Du hast es geschafft.</p>
+        <p>Gib nun bitte den Code aus dem ersten Rätsel ein. Dein Geschenk wird dann umgehend zugestellt:</p>
+        <input class="w3-input" id="success-input" type="number">
+        <button class="w3-button w3-green w3-section" onclick="ready()">Absenden<i class=""></i></button>
+        <p class="w3-red" id = "fehlerAbsenden" style="display: none;">Das hat leider nicht geklappt :( Ist dein Code richig?</p>
+        <div class="w3-green"  style="display: none;" id = "codeRichtig">
+            <p>Top 👍</p>
+            <p>Dein Geschenk (ein Jahr Geocaching Premium) wird gleich gebucht!</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <script src="./script-min.js"></script>
+
+
+</body>
+
+</html>
